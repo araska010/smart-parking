@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('/', '/admin/login');
+    return redirect('/', '/admin/login');
 });
 
 Route::get('/struk/{transaksi}', function ($transaksi) {
