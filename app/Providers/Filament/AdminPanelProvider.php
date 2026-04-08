@@ -27,12 +27,12 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
+            ->login()
             ->databaseNotifications()
             ->brandLogo(asset('image/logoparking.png'))
             ->brandLogoHeight('70px')
             ->brandName('Parking System')
             ->favicon(asset('logoparking.ico'))
-            ->login()
             //->emailVerification()
             ->topNavigation()
             ->profile(isSimple:false)
@@ -50,7 +50,6 @@ class AdminPanelProvider extends PanelProvider
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
                 StartSession::class,
-                
                 ShareErrorsFromSession::class,
                 VerifyCsrfToken::class,
                 SubstituteBindings::class,
