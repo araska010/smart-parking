@@ -29,6 +29,11 @@ class User extends Authenticatable
         return $this->hasMany(Transaksi::class);
     }
 
+    public function canAccessPanel(\Filament\Panel $panel): bool
+    {
+        return true;
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
