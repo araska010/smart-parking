@@ -33,7 +33,7 @@ class AdminPanelProvider extends PanelProvider
             ->brandName('Parking System')
             ->favicon(asset('logoparking.ico'))
             ->login()
-            ->emailVerification()
+            //->emailVerification()
             ->topNavigation()
             ->profile(isSimple:false)
             ->colors([

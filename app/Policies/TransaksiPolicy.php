@@ -66,4 +66,5 @@ class TransaksiPolicy
     {
         return $authUser->can('Reorder:Transaksi');
     }
+
 }
