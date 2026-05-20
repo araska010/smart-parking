@@ -73,6 +73,13 @@ $m = $transaksi->durasi_jam;
 
     <table>
         <tr>
+            <td>Masuk</td>
+            <td class="right">
+                {{ $transaksi->waktu_masuk}}
+            </td>
+        </tr>
+
+        <tr>
             <td>Plat Nomor</td>
             <td class="right">{{ $transaksi->plat_nomor }}</td>
         </tr>
@@ -96,9 +103,9 @@ $m = $transaksi->durasi_jam;
 
     <table>
         <tr>
-            <td>Masuk</td>
+            <td>Total</td>
             <td class="right">
-                {{ $transaksi->waktu_masuk}}
+                Rp {{ number_format($transaksi->total_bayar) }}
             </td>
         </tr>
     </table>

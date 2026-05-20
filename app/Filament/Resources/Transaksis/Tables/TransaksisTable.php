@@ -35,8 +35,9 @@ class TransaksisTable
                     TextColumn::make('kode_parkir')
                         ->label('Kode Parkir')
                         ->searchable()
-                        ->copyable(),
-                        
+                        ->copyable()
+                        ->toggleable(isToggledHiddenByDefault: true),
+
                     TextColumn::make('plat_nomor')
                         ->label('Plat')
                         ->searchable(),
@@ -57,7 +58,7 @@ class TransaksisTable
 
                 TextColumn::make('tarif.tarif_per_jam')
                     ->label('Tarif Per Jam')
-                    ->money('IDR')
+                    ->money('Rp. ')
                     ->toggleable(isToggledHiddenByDefault: true),
 
                 TextColumn::make('area.nama_area'),
@@ -78,19 +79,22 @@ class TransaksisTable
                     }),
 
                 TextColumn::make('total_bayar')
-                    ->money('IDR')
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->money('Rp. '),
 
                 TextColumn::make('durasi_jam')
                     ->label('Durasi')
                     ->formatStateUsing(function ($state) {
                         if (!$state) return '-';
 
-                        $jam = floor($state / 60);
-                        $menit = $state % 60;
+                        $hari = floor($state / 1440);
+                        $sisaMenit = $state % 1440;
 
-                        return ($jam ? $jam . 'jam' : '') .
-                            ($menit ? $menit . 'menit' : '');
+                        $jam = floor($sisaMenit / 60);
+                        $menit = $sisaMenit % 60;
+
+                        return ($hari ? $hari . ' hari ' : '') .
+                            ($jam ? $jam . ' jam ' : '') .
+                            ($menit ? $menit . ' menit' : '');
                     }),
 
                 TextColumn::make('created_at')
@@ -156,7 +160,7 @@ class TransaksisTable
             ])
 
             ->recordActions([
-                
+
 
                 Action::make('keluar')
                     ->label('Keluar')
